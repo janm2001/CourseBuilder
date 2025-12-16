@@ -16,12 +16,18 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
 
-const CreateCourseGeneralInfoForm = () => {
+interface GeneralInfoFormProps {
+  setActiveTab: (active: string) => void;
+}
+
+const CreateCourseGeneralInfoForm = ({
+  setActiveTab,
+}: GeneralInfoFormProps) => {
   const form = useForm<Course>({ resolver: zodResolver(courseSchema) });
   const onSubmit: SubmitHandler<Course> = () => {
-    toast.success("Data has been submited successfuly");
+    toast.success("General data has been submited successfuly");
+    setActiveTab("sectionsInfo");
   };
-  console.log();
   return (
     <Form {...form}>
       <form

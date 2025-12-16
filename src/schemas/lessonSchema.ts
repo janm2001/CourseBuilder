@@ -9,3 +9,5 @@ export const lessonSchema = z.discriminatedUnion("type", [
     textLessonSchema,
     quizLessonSchema,
 ])
+
+export type Lesson = z.infer<typeof lessonSchema>;
